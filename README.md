@@ -1,60 +1,37 @@
-# Ana Belén & Manuel · Música de la ceremonia (v1)
+# Ana Belén & Manuel · Música de la ceremonia
 
-Este paquete contiene una primera propuesta integral para la web y el programa A5 de la ceremonia del 12/09/2026.
+Versión refinada de la web, alineada con la identidad visual del programa A5 V6.
 
-## 1. Web
+## Qué contiene
 
-La carpeta `web/` es un sitio estático listo para GitHub Pages.
+- `index.html`
+- `assets/styles.css`
+- `assets/app.js`
+- `assets/config.js`
+- `assets/anagrama-am.png`
+- `assets/medallon-ceramico.png`
+- `assets/iglesia-santa-maria.png`
 
-- `index.html`: página principal.
-- `assets/config.js`: datos de la boda, repertorio, enlaces y textos explicativos.
-- `assets/styles.css`: identidad visual y diseño responsive.
-- `assets/app.js`: genera el repertorio y carga los vídeos de YouTube al pulsar.
-- `assets/anagrama-am.png` y `assets/mosaico-granadino.png`: imágenes originales suministradas para la boda.
+## Actualizar la web en GitHub Pages
 
-### Publicar en GitHub Pages
+Esta versión está preparada para sustituir la web actual sin cambiar la URL.
 
-1. Copiar el contenido de `web/` a la raíz del repositorio elegido.
-2. En GitHub: Settings -> Pages.
-3. Seleccionar la rama que contiene la web y la carpeta `/ (root)`.
-4. GitHub proporcionará la URL pública.
+1. Descomprime el ZIP.
+2. En el repositorio `musica-boda-ana-manu`, sustituye el `index.html` actual por el de esta carpeta.
+3. Sustituye el contenido de `assets/` por el contenido de la carpeta `assets/` de esta versión.
+4. Haz `Commit changes`.
+5. GitHub Pages actualizará la misma dirección:
+   `https://juanluck.github.io/musica-boda-ana-manu/`
 
-No hay proceso de compilación ni dependencias de Node/Python.
+El archivo `config.js` conserva el repertorio, enlaces, textos y vídeos de la versión anterior. La revisión se concentra en la identidad gráfica y la presentación.
 
-### Quitar los textos explicativos
+## Cambios visuales principales
 
-En `web/assets/config.js` cambiar:
-
-```js
-showDescriptions: true
-```
-
-por:
-
-```js
-showDescriptions: false
-```
-
-Los nombres, autores, momentos y vídeos permanecerán intactos.
-
-### Vídeos
-
-Se conservan exactamente los enlaces facilitados. La web muestra primero una miniatura para mejorar la carga en móvil; al pulsar se inserta el vídeo mediante el modo de privacidad mejorada de YouTube. Cada ficha mantiene además el enlace directo original.
-
-## 2. Programa A5
-
-La carpeta `print/` contiene:
-
-- `programa-a5.html`: fuente editable, preparada para impresión A5 a doble cara.
-- `programa-musical-A5-v1.pdf`: versión PDF para revisar/imprimir.
-
-El QR todavía es un marcador provisional, porque la URL definitiva de GitHub Pages no existe aún. Cuando la web esté publicada, debe sustituirse por el QR real.
-
-## Criterio visual
-
-La propuesta mezcla de forma sutil las dos identidades facilitadas:
-
-- base marfil, verde salvia, líneas doradas y motivos botánicos inspirados en la invitación;
-- pequeños acentos de mosaico azul/dorado inspirados en la cerámica granadina de los regalos.
-
-El objetivo es que web y A5 parezcan papelería oficial de la boda y no un proyecto independiente.
+- EB Garamond + Noto Sans, como en el A5.
+- Cerámica granadina convertida en medallón/sello en lugar de marco.
+- Eliminación de franjas de mosaico, ramas ornamentales, cajas y línea temporal numerada.
+- Incorporación de la ilustración de la Iglesia Santa María la Mayor.
+- Jerarquía visual equivalente a la del programa impreso.
+- Azul reservado al medallón cerámico.
+- Vídeos integrados como elemento digital principal, sin aspecto de tarjeta.
+- Diseño responsive para móvil, tablet y escritorio.
