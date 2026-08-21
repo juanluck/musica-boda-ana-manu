@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Ana Belén & Manuel · Estadísticas
+  </title>
+
+  <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+  <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --marfil: #faf6ee;
+      --verde: #4f6055;
+      --salvia: #71806e;
+      --dorado: #c49b43;
+      --texto: #302f2c;
+      --gris: #756f68;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+
+      background: var(--marfil);
+      color: var(--texto);
+
+      font-family:
+        "EB Garamond",
+        Georgia,
+        serif;
+    }
+
+    main {
+      width: min(92%, 680px);
+      margin: 0 auto;
+
+      min-height: 100vh;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding:
+        42px 20px 52px;
+
+      text-align: center;
+    }
+
+    .signature {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      margin-bottom: 28px;
+    }
+
+    .signature::before,
+    .signature::after {
+      content: "";
+
+      height: 1px;
+      flex: 1;
+
+      background: var(--dorado);
+      opacity: .65;
+    }
+
+    .signature img {
+      width: 45px;
+      height: 45px;
+
+      object-fit: contain;
+    }
+
+    .monogram img {
+      width: 116px;
+      max-width: 35vw;
+
+      margin-bottom: 13px;
+    }
+
+    h1 {
+      margin: 0;
+
+      color: var(--verde);
+
+      font-size:
+        clamp(2rem, 7vw, 3rem);
+
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin:
+        10px 0 38px;
+
+      font-family:
+        "Noto Sans",
+        sans-serif;
+
+      color: var(--salvia);
+
+      font-size: .69rem;
+      font-weight: 600;
+
+      letter-spacing: .17em;
+
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin:
+        0 0 35px;
+
+      color: var(--gris);
+
+      font-size: 1.08rem;
+      font-style: italic;
+    }
+
+    .stats {
+      width: 100%;
+
+      display: grid;
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 1px;
+
+      background:
+        rgba(196, 155, 67, .45);
+
+      border-top:
+        1px solid rgba(196,155,67,.45);
+
+      border-bottom:
+        1px solid rgba(196,155,67,.45);
+    }
+
+    .stat {
+      background: var(--marfil);
+
+      padding:
+        27px 10px 25px;
+    }
+
+    .number {
+      display: block;
+
+      color: var(--verde);
+
+      font-size:
+        clamp(2.8rem, 12vw, 4.7rem);
+
+      line-height: .95;
+
+      font-variant-numeric:
+        lining-nums tabular-nums;
+    }
+
+    .label {
+      display: block;
+
+      margin-top: 9px;
+
+      color: var(--salvia);
+
+      font-family:
+        "Noto Sans",
+        sans-serif;
+
+      font-size: .65rem;
+      font-weight: 600;
+
+      letter-spacing: .11em;
+
+      text-transform: uppercase;
+    }
+
+    .today {
+      margin-top: 26px;
+
+      color: var(--gris);
+
+      font-size: .96rem;
+    }
+
+    .updated {
+      margin-top: 5px;
+
+      color: var(--gris);
+
+      opacity: .72;
+
+      font-size: .79rem;
+    }
+
+    .loading {
+      padding: 28px;
+
+      color: var(--salvia);
+
+      font-style: italic;
+    }
+
+    .error {
+      color: #8a5148;
+    }
+
+    .back {
+      margin-top: 36px;
+
+      color: var(--verde);
+
+      text-decoration: none;
+
+      border-bottom:
+        1px solid rgba(196,155,67,.65);
+
+      padding-bottom: 2px;
+
+      font-style: italic;
+    }
+
+    @media (max-width: 480px) {
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .stat {
+        padding:
+          24px 5px 22px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<main>
+
+  <div class="signature">
+    <img
+      src="assets/medallon-ceramico.png"
+      alt=""
+    >
+  </div>
+
+
+  <div class="monogram">
+    <img
+      src="assets/anagrama-am.png"
+      alt="Ana Belén y Manuel"
+    >
+  </div>
+
+
+  <h1>
+    Ana Belén & Manuel
+  </h1>
+
+  <div class="subtitle">
+    La música sigue sonando
+  </div>
+
+
+  <p class="intro">
+    Desde que comenzó este pequeño
+    recorrido musical…
+  </p>
+
+
+  <div
+    id="loading"
+    class="loading"
+  >
+    Consultando las estadísticas…
+  </div>
+
+
+  <div
+    id="content"
+    hidden
+  >
+
+    <div class="stats">
+
+      <div class="stat">
+        <span
+          class="number"
+          id="visits"
+        >
+          —
+        </span>
+
+        <span class="label">
+          visitas
+        </span>
+      </div>
+
+
+      <div class="stat">
+        <span
+          class="number"
+          id="pageviews"
+        >
+          —
+        </span>
+
+        <span class="label">
+          páginas vistas
+        </span>
+      </div>
+
+    </div>
+
+
+    <div
+      class="today"
+      id="today"
+    ></div>
+
+
+    <div
+      class="updated"
+      id="updated"
+    ></div>
+
+  </div>
+
+
+  <a
+    class="back"
+    href="./"
+  >
+    Volver al programa musical
+  </a>
+
+</main>
+
+
+<script>
+
+  /*
+   * Si tu subdominio workers.dev fuese distinto,
+   * esta es la única línea que tendrás que cambiar.
+   */
+  const API =
+    "https://boda-ana-manuel-analytics-api.juanlu-jimenez.workers.dev/stats";
+
+
+  async function loadStats() {
+
+    const loading =
+      document.getElementById("loading");
+
+    const content =
+      document.getElementById("content");
+
+
+    try {
+
+      const response =
+        await fetch(API);
+
+
+      if (!response.ok) {
+        throw new Error(
+          "No se pudieron obtener los datos"
+        );
+      }
+
+
+      const data =
+        await response.json();
+
+
+      if (!data.ok) {
+        throw new Error(
+          "Respuesta incorrecta"
+        );
+      }
+
+
+      const formatter =
+        new Intl.NumberFormat("es-ES");
+
+
+      document.getElementById(
+        "visits"
+      ).textContent =
+        formatter.format(data.visits);
+
+
+      document.getElementById(
+        "pageviews"
+      ).textContent =
+        formatter.format(data.pageviews);
+
+
+      document.getElementById(
+        "today"
+      ).textContent =
+        `Hoy: ${formatter.format(
+          data.todayVisits
+        )} visitas`;
+
+
+      const date =
+        new Date(data.updatedAt);
+
+
+      document.getElementById(
+        "updated"
+      ).textContent =
+        `Actualizado ${date.toLocaleString(
+          "es-ES",
+          {
+            dateStyle: "medium",
+            timeStyle: "short"
+          }
+        )}`;
+
+
+      loading.hidden = true;
+      content.hidden = false;
+
+    }
+
+    catch (error) {
+
+      loading.textContent =
+        "No ha sido posible consultar las estadísticas.";
+
+      loading.classList.add(
+        "error"
+      );
+
+    }
+
+  }
+
+
+  loadStats();
+
+</script>
+
+</body>
+</html>
