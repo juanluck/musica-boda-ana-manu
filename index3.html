@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6ee">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Programa musical de la ceremonia de boda de Ana Belén y Manuel, 12 de septiembre de 2026, Algarinejo.">
+  <title>Ana Belén & Manuel · Música de la ceremonia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /*
+      INDEX 3 · Casi todas las mejoras
+      Incluye INDEX 2 y añade:
+      - Ancho editorial más contenido.
+      - Miniaturas visualmente homogeneizadas.
+      - Se elimina la etiqueta "Reproducir".
+      - Enlaces de YouTube más discretos.
+      - Ritmo vertical más refinado.
+    */
+
+    .hero {
+      padding-bottom: 54px;
+    }
+
+    .monogram {
+      margin-top: 40px;
+      margin-bottom: 14px;
+    }
+
+    .gold-rule {
+      margin-top: 23px;
+      margin-bottom: 16px;
+    }
+
+    .church-sketch {
+      width: min(392px, 81vw);
+      margin-top: 13px;
+      margin-bottom: 8px;
+      opacity: .72;
+    }
+
+    .ceremony-credits {
+      max-width: 650px;
+      margin: 18px auto 0;
+    }
+
+    .ceremony-credits .quartet-block {
+      margin-top: 0;
+    }
+
+    .ceremony-credits .quartet-block + .quartet-block {
+      margin-top: 17px;
+    }
+
+    .hero-footer-rule {
+      margin-top: 29px;
+      margin-bottom: 12px;
+    }
+
+    main {
+      width: min(960px, calc(100% - 34px));
+    }
+
+    .intro {
+      margin-top: 0;
+      margin-bottom: 40px;
+    }
+
+    .intro h2 {
+      font-size: clamp(2.6rem, 5.6vw, 3.75rem);
+    }
+
+    .program {
+      width: min(100%, 930px);
+    }
+
+    .piece {
+      padding-top: 43px;
+      padding-bottom: 48px;
+    }
+
+    .piece-copy::before {
+      width: 42px;
+    }
+
+    .youtube-link {
+      margin-top: 15px;
+      font-size: .64rem;
+      letter-spacing: .02em;
+      opacity: .82;
+    }
+
+    .video-shell {
+      aspect-ratio: 16 / 9 !important;
+      border-color: rgba(197,154,67,.18);
+    }
+
+    .video-poster {
+      isolation: isolate;
+      background:
+        linear-gradient(rgba(58,68,61,.08), rgba(58,68,61,.08)),
+        var(--thumb) center / cover no-repeat;
+    }
+
+    .video-poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: rgba(250,246,238,.055);
+      -webkit-backdrop-filter: saturate(.78);
+      backdrop-filter: saturate(.78);
+      transition: background .25s ease, backdrop-filter .25s ease;
+      pointer-events: none;
+    }
+
+    .video-poster:hover::before,
+    .video-poster:focus-visible::before {
+      background: rgba(250,246,238,.015);
+      -webkit-backdrop-filter: saturate(.94);
+      backdrop-filter: saturate(.94);
+    }
+
+    .play-button {
+      z-index: 2;
+      width: 56px;
+      height: 56px;
+      box-shadow: 0 6px 18px rgba(25,28,25,.11);
+    }
+
+    .video-caption {
+      display: none;
+    }
+
+    @media (min-width: 760px) {
+      .hero {
+        padding-bottom: 62px;
+      }
+
+      .monogram {
+        margin-top: 45px;
+      }
+
+      .ceremony-credits {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr;
+        align-items: center;
+        column-gap: 30px;
+        margin-top: 20px;
+      }
+
+      .ceremony-credits::before {
+        content: "";
+        grid-column: 2;
+        grid-row: 1;
+        width: 1px;
+        height: 40px;
+        background: var(--gold-soft);
+        justify-self: center;
+      }
+
+      .ceremony-credits .quartet-block:first-child {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .ceremony-credits .quartet-block:last-child {
+        grid-column: 3;
+        grid-row: 1;
+        margin-top: 0;
+      }
+
+      .piece {
+        grid-template-columns: minmax(260px, .86fr) minmax(380px, 1.14fr);
+        gap: clamp(32px, 4.5vw, 54px);
+      }
+
+      .piece--even {
+        grid-template-columns: minmax(380px, 1.14fr) minmax(260px, .86fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-bottom: 46px;
+      }
+
+      .monogram {
+        margin-top: 31px;
+      }
+
+      main {
+        width: calc(100% - 28px);
+      }
+
+      .church-sketch {
+        width: min(315px, 90vw);
+        opacity: .70;
+      }
+
+      .intro {
+        margin-bottom: 29px;
+      }
+
+      .piece {
+        padding-top: 30px;
+        padding-bottom: 34px;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <header class="hero">
+    <div class="ceramic-signature" aria-hidden="true">
+      <span class="ceramic-signature__line"></span>
+      <img src="assets/medallon-ceramico.png" alt="">
+      <span class="ceramic-signature__line"></span>
+    </div>
+
+    <div class="monogram" aria-label="Anagrama AM">
+      <img src="assets/anagrama-am.png" alt="Anagrama de Ana Belén y Manuel">
+    </div>
+
+    <h1 id="couple"></h1>
+    <p class="hero-kicker">Música de la ceremonia</p>
+
+    <div class="gold-rule" aria-hidden="true"><span>✦</span></div>
+
+    <p class="ceremony-line"><span id="date"></span> · <span id="time"></span> h</p>
+    <p class="ceremony-place"><strong id="church"></strong><br><span id="place"></span></p>
+
+    <img class="church-sketch" src="assets/iglesia-santa-maria.png" alt="Ilustración de la Iglesia Santa María la Mayor">
+
+    <div class="ceremony-credits" aria-label="Créditos de la ceremonia">
+      <div class="quartet-block">
+        <p class="eyebrow">Celebrante</p>
+        <p class="quartet-name">Maiquel Hernández Montero</p>
+      </div>
+
+      <div class="quartet-block">
+        <p class="eyebrow">Interpretación musical</p>
+        <a class="quartet-link" id="quartet" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+    </div>
+
+    <div class="footer-rule hero-footer-rule" aria-hidden="true"><span>✦</span></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="repertorio-title">
+      <h2 id="repertorio-title">Programa musical</h2>
+      <p class="section-kicker">Celebración litúrgica</p>
+      <p class="intro-copy">Cada pieza acompaña uno de los momentos de la celebración. Puedes volver a escucharla aquí siguiendo el mismo orden de la liturgia.</p>
+    </section>
+
+    <section class="program" id="timeline" aria-label="Programa musical"></section>
+  </main>
+
+  <footer>
+    <div class="footer-rule" aria-hidden="true"><span>✦</span></div>
+    <p class="footer-couple">Ana Belén & Manuel</p>
+    <p>12 · 09 · 2026 · Algarinejo</p>
+    <p class="footer-quartet">Interpretación musical · <a id="footerQuartet" target="_blank" rel="noopener noreferrer"></a></p>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js"></script>
+
+  <!--
+    Estas variantes de comparación NO cargan Cloudflare Web Analytics,
+    para que tus pruebas no alteren las estadísticas reales.
+  -->
+
+  <!-- Easter egg: 5 clics/toques sobre el medallón cerámico -->
+  <script>
+    (() => {
+      const analyticsUrl = 'estadisticas.html';
+      const medallion = document.querySelector('.ceramic-signature img');
+      if (!medallion) return;
+
+      let clicks = 0;
+      let resetTimer = null;
+
+      medallion.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(resetTimer);
+
+        resetTimer = setTimeout(() => {
+          clicks = 0;
+        }, 4000);
+
+        if (clicks >= 5) {
+          clicks = 0;
+          clearTimeout(resetTimer);
+          window.open(analyticsUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf6ee">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Programa musical de la ceremonia de boda de Ana Belén y Manuel, 12 de septiembre de 2026, Algarinejo.">
+  <title>Ana Belén & Manuel · Música de la ceremonia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+
+  <style>
+    /*
+      INDEX 4 · Dirección de arte completa
+      - Todo lo anterior.
+      - Transición portada/programa sin un segundo ornamento.
+      - Textura de papel extremadamente sutil.
+      - Escalas y espaciados afinados.
+      - Repertorio más editorial y calmado.
+      - Miniaturas integradas en la paleta y color recuperado al interactuar.
+    */
+
+    body {
+      position: relative;
+      background: var(--ivory);
+    }
+
+    /* Capa de "papel": deliberadamente casi imperceptible. */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .19;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+
+    .hero {
+      width: min(860px, calc(100% - 32px));
+      padding: 31px 22px 46px;
+    }
+
+    .ceramic-signature {
+      width: min(600px, 82vw);
+    }
+
+    .ceramic-signature img {
+      width: 46px;
+      height: 46px;
+    }
+
+    .monogram {
+      width: clamp(116px, 18vw, 148px);
+      margin-top: 38px;
+      margin-bottom: 13px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7.4vw, 4.9rem);
+      letter-spacing: -.022em;
+    }
+
+    .hero-kicker {
+      margin-top: 7px;
+      letter-spacing: .18em;
+    }
+
+    .gold-rule {
+      width: min(278px, 70%);
+      margin-top: 22px;
+      margin-bottom: 16px;
+    }
+
+    .ceremony-line {
+      font-size: clamp(1.1rem, 2.5vw, 1.28rem);
+    }
+
+    .ceremony-place {
+      margin-top: 3px;
+    }
+
+    .church-sketch {
+      width: min(400px, 82vw);
+      margin: 11px auto 6px;
+      opacity: .70;
+    }
+
+    .ceremony-credits {
+      max-width: 650px;
+      margin: 17px auto 0;
+    }
+
+    .ceremony-credits .quartet-block {
+      margin-top: 0;
+    }
+
+    .ceremony-credits .quartet-block + .quartet-block {
+      margin-top: 17px;
+    }
+
+    .eyebrow {
+      font-size: .65rem;
+      letter-spacing: .16em;
+    }
+
+    .quartet-link,
+    .quartet-name {
+      font-size: 1.14rem;
+    }
+
+    /* En la versión final, la portada termina sin otro separador ornamental. */
+    .hero-footer-rule {
+      display: none;
+    }
+
+    main {
+      width: min(950px, calc(100% - 32px));
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 12px auto 35px;
+    }
+
+    .intro h2 {
+      margin: 0;
+      font-size: clamp(2.55rem, 5.4vw, 3.65rem);
+      line-height: .98;
+    }
+
+    .section-kicker {
+      margin-top: 7px;
+      letter-spacing: .16em;
+    }
+
+    .intro-copy {
+      max-width: 54ch;
+      margin-top: 16px;
+      font-size: .97rem;
+      line-height: 1.58;
+    }
+
+    .program {
+      width: min(100%, 920px);
+      border-top-color: rgba(197,154,67,.42);
+    }
+
+    .piece {
+      gap: 21px;
+      padding: 40px 0 45px;
+      border-bottom-color: rgba(197,154,67,.36);
+    }
+
+    .piece-copy::before {
+      width: 39px;
+      margin-bottom: 13px;
+      background: rgba(197,154,67,.82);
+    }
+
+    .piece-moment {
+      margin-bottom: 6px;
+      font-size: .65rem;
+      letter-spacing: .105em;
+    }
+
+    .piece h3 {
+      font-size: clamp(1.95rem, 4.8vw, 2.55rem);
+      line-height: 1.01;
+    }
+
+    .piece-author {
+      margin-top: 5px;
+      font-size: 1rem;
+    }
+
+    .piece-note {
+      margin-top: 16px;
+      max-width: 46ch;
+      font-size: .94rem;
+      line-height: 1.58;
+    }
+
+    .youtube-link {
+      margin-top: 14px;
+      color: var(--sage);
+      font-size: .62rem;
+      font-weight: 500;
+      letter-spacing: .018em;
+      opacity: .78;
+      border-bottom-color: rgba(111,130,117,.22);
+      transition: opacity .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .youtube-link:hover,
+    .youtube-link:focus-visible {
+      opacity: 1;
+    }
+
+    .video-shell {
+      aspect-ratio: 16 / 9 !important;
+      border: 1px solid rgba(197,154,67,.16);
+      border-radius: 2px;
+      background: #eee8dc;
+    }
+
+    .video-poster {
+      isolation: isolate;
+      background:
+        linear-gradient(rgba(64,76,67,.075), rgba(64,76,67,.075)),
+        var(--thumb) center / cover no-repeat;
+    }
+
+    /*
+      La capa reduce ligeramente la saturación de la miniatura sin afectar
+      al botón Play. En hover/focus recupera casi todo el color.
+    */
+    .video-poster::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background: rgba(250,246,238,.065);
+      -webkit-backdrop-filter: saturate(.70) contrast(.98);
+      backdrop-filter: saturate(.70) contrast(.98);
+      transition:
+        background .28s ease,
+        backdrop-filter .28s ease;
+    }
+
+    .video-poster:hover::before,
+    .video-poster:focus-visible::before {
+      background: rgba(250,246,238,.015);
+      -webkit-backdrop-filter: saturate(.96) contrast(1);
+      backdrop-filter: saturate(.96) contrast(1);
+    }
+
+    .video-poster::after {
+      z-index: 1;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.055);
+    }
+
+    .play-button {
+      z-index: 2;
+      width: 54px;
+      height: 54px;
+      background: rgba(255,253,248,.92);
+      border-color: rgba(197,154,67,.52);
+      box-shadow: 0 5px 17px rgba(25,28,25,.105);
+    }
+
+    .video-caption {
+      display: none;
+    }
+
+    footer {
+      width: min(680px, calc(100% - 36px));
+      margin-top: 50px;
+      margin-bottom: 38px;
+    }
+
+    .footer-rule {
+      opacity: .88;
+    }
+
+    @media (min-width: 760px) {
+      .hero {
+        padding-top: 39px;
+        padding-bottom: 53px;
+      }
+
+      .monogram {
+        margin-top: 43px;
+      }
+
+      .church-sketch {
+        width: min(405px, 78vw);
+      }
+
+      .ceremony-credits {
+        display: grid;
+        grid-template-columns: 1fr 1px 1fr;
+        align-items: center;
+        column-gap: 31px;
+        margin-top: 18px;
+      }
+
+      .ceremony-credits::before {
+        content: "";
+        grid-column: 2;
+        grid-row: 1;
+        width: 1px;
+        height: 38px;
+        background: rgba(197,154,67,.34);
+        justify-self: center;
+      }
+
+      .ceremony-credits .quartet-block:first-child {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .ceremony-credits .quartet-block:last-child {
+        grid-column: 3;
+        grid-row: 1;
+        margin-top: 0;
+      }
+
+      .intro {
+        margin-top: 5px;
+        margin-bottom: 43px;
+      }
+
+      .piece {
+        grid-template-columns: minmax(255px, .88fr) minmax(370px, 1.12fr);
+        gap: clamp(30px, 4.2vw, 50px);
+        padding: 47px 0 52px;
+      }
+
+      .piece--even {
+        grid-template-columns: minmax(370px, 1.12fr) minmax(255px, .88fr);
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .hero {
+        padding-top: 44px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        width: calc(100% - 18px);
+        padding: 23px 8px 39px;
+      }
+
+      .ceramic-signature {
+        width: min(100%, 326px);
+      }
+
+      .ceramic-signature img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .monogram {
+        margin-top: 29px;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14.4vw, 3.85rem);
+      }
+
+      .church-sketch {
+        width: min(318px, 92vw);
+        margin-top: 10px;
+        opacity: .68;
+      }
+
+      .ceremony-credits {
+        margin-top: 15px;
+      }
+
+      .ceremony-credits .quartet-block + .quartet-block {
+        margin-top: 15px;
+      }
+
+      main {
+        width: calc(100% - 26px);
+      }
+
+      .intro {
+        margin-top: 4px;
+        margin-bottom: 27px;
+      }
+
+      .intro-copy {
+        font-size: .92rem;
+      }
+
+      .piece {
+        padding: 29px 0 33px;
+        gap: 18px;
+      }
+
+      .piece-copy {
+        padding: 0;
+      }
+
+      .piece-note {
+        font-size: .89rem;
+      }
+
+      .play-button {
+        width: 52px;
+        height: 52px;
+      }
+
+      footer {
+        margin-top: 42px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .video-poster::before {
+        transition: none;
+      }
+    }
+  </style>
+
+</head>
+<body>
+  <header class="hero">
+    <div class="ceramic-signature" aria-hidden="true">
+      <span class="ceramic-signature__line"></span>
+      <img src="assets/medallon-ceramico.png" alt="">
+      <span class="ceramic-signature__line"></span>
+    </div>
+
+    <div class="monogram" aria-label="Anagrama AM">
+      <img src="assets/anagrama-am.png" alt="Anagrama de Ana Belén y Manuel">
+    </div>
+
+    <h1 id="couple"></h1>
+    <p class="hero-kicker">Música de la ceremonia</p>
+
+    <div class="gold-rule" aria-hidden="true"><span>✦</span></div>
+
+    <p class="ceremony-line"><span id="date"></span> · <span id="time"></span> h</p>
+    <p class="ceremony-place"><strong id="church"></strong><br><span id="place"></span></p>
+
+    <img class="church-sketch" src="assets/iglesia-santa-maria.png" alt="Ilustración de la Iglesia Santa María la Mayor">
+
+    <div class="ceremony-credits" aria-label="Créditos de la ceremonia">
+      <div class="quartet-block">
+        <p class="eyebrow">Celebrante</p>
+        <p class="quartet-name">Maiquel Hernández Montero</p>
+      </div>
+
+      <div class="quartet-block">
+        <p class="eyebrow">Interpretación musical</p>
+        <a class="quartet-link" id="quartet" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+    </div>
+
+    <div class="footer-rule hero-footer-rule" aria-hidden="true"><span>✦</span></div>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="repertorio-title">
+      <h2 id="repertorio-title">Programa musical</h2>
+      <p class="section-kicker">Celebración litúrgica</p>
+      <p class="intro-copy">Cada pieza acompaña uno de los momentos de la celebración. Puedes volver a escucharla aquí siguiendo el mismo orden de la liturgia.</p>
+    </section>
+
+    <section class="program" id="timeline" aria-label="Programa musical"></section>
+  </main>
+
+  <footer>
+    <div class="footer-rule" aria-hidden="true"><span>✦</span></div>
+    <p class="footer-couple">Ana Belén & Manuel</p>
+    <p>12 · 09 · 2026 · Algarinejo</p>
+    <p class="footer-quartet">Interpretación musical · <a id="footerQuartet" target="_blank" rel="noopener noreferrer"></a></p>
+  </footer>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/app.js"></script>
+
+  <!--
+    Estas variantes de comparación NO cargan Cloudflare Web Analytics,
+    para que tus pruebas no alteren las estadísticas reales.
+  -->
+
+  <!-- Easter egg: 5 clics/toques sobre el medallón cerámico -->
+  <script>
+    (() => {
+      const analyticsUrl = 'estadisticas.html';
+      const medallion = document.querySelector('.ceramic-signature img');
+      if (!medallion) return;
+
+      let clicks = 0;
+      let resetTimer = null;
+
+      medallion.addEventListener('click', () => {
+        clicks++;
+        clearTimeout(resetTimer);
+
+        resetTimer = setTimeout(() => {
+          clicks = 0;
+        }, 4000);
+
+        if (clicks >= 5) {
+          clicks = 0;
+          clearTimeout(resetTimer);
+          window.open(analyticsUrl, '_blank', 'noopener,noreferrer');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
