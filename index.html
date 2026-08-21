@@ -70,5 +70,41 @@
   <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "cc27f35943424641801efa3a5036a9bf"}'></script>
   <!-- End Cloudflare Web Analytics -->
 
+  <!-- Easter egg: 5 clics/toques sobre el medallón cerámico -->
+<script>
+  (() => {
+    const analyticsUrl =
+      'https://dash.cloudflare.com/6b073fdba338c89a988c5f6ef3dd11cf/web-analytics/overview?siteTag~in=f113e00892834f6d8a413ff11f7a0092&excludeBots=Yes';
+
+    const medallion = document.querySelector('.ceramic-signature img');
+
+    if (!medallion) return;
+
+    let clicks = 0;
+    let resetTimer = null;
+
+    medallion.addEventListener('click', () => {
+      clicks++;
+
+      clearTimeout(resetTimer);
+
+      resetTimer = setTimeout(() => {
+        clicks = 0;
+      }, 4000);
+
+      if (clicks >= 5) {
+        clicks = 0;
+        clearTimeout(resetTimer);
+
+        window.open(
+          analyticsUrl,
+          '_blank',
+          'noopener,noreferrer'
+        );
+      }
+    });
+  })();
+</script>
+
 </body>
 </html>
