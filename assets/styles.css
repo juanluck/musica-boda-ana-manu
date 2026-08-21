@@ -153,7 +153,9 @@ h1 {
   font-weight: 600;
   letter-spacing: .15em;
 }
-.quartet-link {
+
+.quartet-link,
+.quartet-name {
   display: inline-block;
   margin-top: 2px;
   color: var(--sage-dark);
@@ -163,6 +165,10 @@ h1 {
   border-bottom: 1px solid transparent;
   transition: color .18s ease, border-color .18s ease;
 }
+.quartet-name {
+  margin: 0;
+}
+
 .quartet-link:hover,
 .quartet-link:focus-visible {
   color: #8f6f2d;
