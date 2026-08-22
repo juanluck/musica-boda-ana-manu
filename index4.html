@@ -12,408 +12,361 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
 
-  <style>
-    /*
-      INDEX 4 · Dirección de arte completa
-      - Todo lo anterior.
-      - Transición portada/programa sin un segundo ornamento.
-      - Textura de papel extremadamente sutil.
-      - Escalas y espaciados afinados.
-      - Repertorio más editorial y calmado.
-      - Miniaturas integradas en la paleta y color recuperado al interactuar.
-    */
-
-    body {
-      position: relative;
-      background: var(--ivory);
-    }
-
-    /* Capa de "papel": deliberadamente casi imperceptible. */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: .19;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
-    }
-
-    .hero {
-      width: min(860px, calc(100% - 32px));
-      padding: 31px 22px 46px;
-    }
-
-    .ceramic-signature {
-      width: min(600px, 82vw);
-    }
-
-    .ceramic-signature img {
-      width: 46px;
-      height: 46px;
-    }
-
-    .monogram {
-      width: clamp(116px, 18vw, 148px);
-      margin-top: 38px;
-      margin-bottom: 13px;
-    }
-
-    h1 {
-      font-size: clamp(3rem, 7.4vw, 4.9rem);
-      letter-spacing: -.022em;
-    }
-
-    .hero-kicker {
-      margin-top: 7px;
-      letter-spacing: .18em;
-    }
-
-    .gold-rule {
-      width: min(278px, 70%);
-      margin-top: 22px;
-      margin-bottom: 16px;
-    }
-
-    .ceremony-line {
-      font-size: clamp(1.1rem, 2.5vw, 1.28rem);
-    }
-
-    .ceremony-place {
-      margin-top: 3px;
-    }
-
-    .church-sketch {
-      width: min(400px, 82vw);
-      margin: 11px auto 6px;
-      opacity: .70;
-    }
-
-    .ceremony-credits {
-      max-width: 650px;
-      margin: 17px auto 0;
-    }
-
-    .ceremony-credits .quartet-block {
-      margin-top: 0;
-    }
-
-    .ceremony-credits .quartet-block + .quartet-block {
-      margin-top: 17px;
-    }
-
-    .eyebrow {
-      font-size: .65rem;
-      letter-spacing: .16em;
-    }
-
-    .quartet-link,
-    .quartet-name {
-      font-size: 1.14rem;
-    }
-
-    /* En la versión final, la portada termina sin otro separador ornamental. */
-    .hero-footer-rule {
-      display: none;
-    }
-
-    main {
-      width: min(950px, calc(100% - 32px));
-    }
-
-    .intro {
-      max-width: 650px;
-      margin: 12px auto 35px;
-    }
-
-    .intro h2 {
-      margin: 0;
-      font-size: clamp(2.55rem, 5.4vw, 3.65rem);
-      line-height: .98;
-    }
-
-    .section-kicker {
-      margin-top: 7px;
-      letter-spacing: .16em;
-    }
-
-    .intro-copy {
-      max-width: 54ch;
-      margin-top: 16px;
-      font-size: .97rem;
-      line-height: 1.58;
-    }
-
-    .program {
-      width: min(100%, 920px);
-      border-top-color: rgba(197,154,67,.42);
-    }
-
-    .piece {
-      gap: 21px;
-      padding: 40px 0 45px;
-      border-bottom-color: rgba(197,154,67,.36);
-    }
-
-    .piece-copy::before {
-      width: 39px;
-      margin-bottom: 13px;
-      background: rgba(197,154,67,.82);
-    }
-
-    .piece-moment {
-      margin-bottom: 6px;
-      font-size: .65rem;
-      letter-spacing: .105em;
-    }
-
-    .piece h3 {
-      font-size: clamp(1.95rem, 4.8vw, 2.55rem);
-      line-height: 1.01;
-    }
-
-    .piece-author {
-      margin-top: 5px;
-      font-size: 1rem;
-    }
-
-    .piece-note {
-      margin-top: 16px;
-      max-width: 46ch;
-      font-size: .94rem;
-      line-height: 1.58;
-    }
-
-    .youtube-link {
-      margin-top: 14px;
-      color: var(--sage);
-      font-size: .62rem;
-      font-weight: 500;
-      letter-spacing: .018em;
-      opacity: .78;
-      border-bottom-color: rgba(111,130,117,.22);
-      transition: opacity .18s ease, color .18s ease, border-color .18s ease;
-    }
-
-    .youtube-link:hover,
-    .youtube-link:focus-visible {
-      opacity: 1;
-    }
-
-    .video-shell {
-      aspect-ratio: 16 / 9 !important;
-      border: 1px solid rgba(197,154,67,.16);
-      border-radius: 2px;
-      background: #eee8dc;
-    }
-
-    .video-poster {
-      isolation: isolate;
-      background:
-        linear-gradient(rgba(64,76,67,.075), rgba(64,76,67,.075)),
-        var(--thumb) center / cover no-repeat;
-    }
-
-    /*
-      La capa reduce ligeramente la saturación de la miniatura sin afectar
-      al botón Play. En hover/focus recupera casi todo el color.
-    */
-    .video-poster::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background: rgba(250,246,238,.065);
-      -webkit-backdrop-filter: saturate(.70) contrast(.98);
-      backdrop-filter: saturate(.70) contrast(.98);
-      transition:
-        background .28s ease,
-        backdrop-filter .28s ease;
-    }
-
-    .video-poster:hover::before,
-    .video-poster:focus-visible::before {
-      background: rgba(250,246,238,.015);
-      -webkit-backdrop-filter: saturate(.96) contrast(1);
-      backdrop-filter: saturate(.96) contrast(1);
-    }
-
-    .video-poster::after {
-      z-index: 1;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.055);
-    }
-
-    .play-button {
-      z-index: 2;
-      width: 54px;
-      height: 54px;
-      background: rgba(255,253,248,.92);
-      border-color: rgba(197,154,67,.52);
-      box-shadow: 0 5px 17px rgba(25,28,25,.105);
-    }
-
-    .video-caption {
-      display: none;
-    }
-
-    footer {
-      width: min(680px, calc(100% - 36px));
-      margin-top: 50px;
-      margin-bottom: 38px;
-    }
-
-    .footer-rule {
-      opacity: .88;
-    }
-
-    @media (min-width: 760px) {
-      .hero {
-        padding-top: 39px;
-        padding-bottom: 53px;
-      }
-
-      .monogram {
-        margin-top: 43px;
-      }
-
-      .church-sketch {
-        width: min(405px, 78vw);
-      }
-
-      .ceremony-credits {
-        display: grid;
-        grid-template-columns: 1fr 1px 1fr;
-        align-items: center;
-        column-gap: 31px;
-        margin-top: 18px;
-      }
-
-      .ceremony-credits::before {
-        content: "";
-        grid-column: 2;
-        grid-row: 1;
-        width: 1px;
-        height: 38px;
-        background: rgba(197,154,67,.34);
-        justify-self: center;
-      }
-
-      .ceremony-credits .quartet-block:first-child {
-        grid-column: 1;
-        grid-row: 1;
-      }
-
-      .ceremony-credits .quartet-block:last-child {
-        grid-column: 3;
-        grid-row: 1;
-        margin-top: 0;
-      }
-
-      .intro {
-        margin-top: 5px;
-        margin-bottom: 43px;
-      }
-
-      .piece {
-        grid-template-columns: minmax(255px, .88fr) minmax(370px, 1.12fr);
-        gap: clamp(30px, 4.2vw, 50px);
-        padding: 47px 0 52px;
-      }
-
-      .piece--even {
-        grid-template-columns: minmax(370px, 1.12fr) minmax(255px, .88fr);
-      }
-    }
-
-    @media (min-width: 1080px) {
-      .hero {
-        padding-top: 44px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .hero {
-        width: calc(100% - 18px);
-        padding: 23px 8px 39px;
-      }
-
-      .ceramic-signature {
-        width: min(100%, 326px);
-      }
-
-      .ceramic-signature img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .monogram {
-        margin-top: 29px;
-        margin-bottom: 12px;
-      }
-
-      h1 {
-        font-size: clamp(2.8rem, 14.4vw, 3.85rem);
-      }
-
-      .church-sketch {
-        width: min(318px, 92vw);
-        margin-top: 10px;
-        opacity: .68;
-      }
-
-      .ceremony-credits {
-        margin-top: 15px;
-      }
-
-      .ceremony-credits .quartet-block + .quartet-block {
-        margin-top: 15px;
-      }
-
-      main {
-        width: calc(100% - 26px);
-      }
-
-      .intro {
-        margin-top: 4px;
-        margin-bottom: 27px;
-      }
-
-      .intro-copy {
-        font-size: .92rem;
-      }
-
-      .piece {
-        padding: 29px 0 33px;
-        gap: 18px;
-      }
-
-      .piece-copy {
-        padding: 0;
-      }
-
-      .piece-note {
-        font-size: .89rem;
-      }
-
-      .play-button {
-        width: 52px;
-        height: 52px;
-      }
-
-      footer {
-        margin-top: 42px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .video-poster::before {
-        transition: none;
-      }
-    }
-  </style>
+<style>
+/* =========================================================
+   INDEX 4 — DIRECCIÓN DE ARTE COMPLETA
+   La versión móvil cambia de forma inequívoca:
+   - portada y programa forman una sola pieza editorial
+   - textura de papel muy sutil
+   - desaparece el separador ornamental inferior de portada
+   - créditos compactos y equilibrados
+   - repertorio estrecho, tipográfico y sin "cajas"
+   - miniaturas más calmadas y botón Play mínimo
+   ========================================================= */
+
+body {
+  position: relative;
+  background: #faf6ee !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .17;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 150 150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.hero {
+  width: min(820px, calc(100% - 18px)) !important;
+  padding: 19px 8px 28px !important;
+}
+
+.ceramic-signature {
+  width: min(294px, 84vw) !important;
+}
+
+.ceramic-signature img {
+  width: 37px !important;
+  height: 37px !important;
+}
+
+.ceramic-signature__line {
+  opacity: .75;
+}
+
+.monogram {
+  width: clamp(88px, 22vw, 108px) !important;
+  margin-top: 20px !important;
+  margin-bottom: 7px !important;
+}
+
+.hero h1 {
+  font-size: clamp(2.65rem, 12.4vw, 3.9rem) !important;
+  line-height: .94 !important;
+  letter-spacing: -.03em !important;
+}
+
+.hero-kicker {
+  margin: 3px 0 0 !important;
+  font-size: .60rem !important;
+  letter-spacing: .20em !important;
+}
+
+.gold-rule {
+  width: min(200px, 58vw) !important;
+  margin: 13px auto 10px !important;
+}
+
+.ceremony-line {
+  margin: 0 !important;
+  font-size: .98rem !important;
+  line-height: 1.25 !important;
+}
+
+.ceremony-place {
+  margin: 1px 0 0 !important;
+  font-size: .93rem !important;
+  line-height: 1.30 !important;
+}
+
+.church-sketch {
+  display: block;
+  width: min(305px, 88vw) !important;
+  margin: 6px auto 1px !important;
+  opacity: .64 !important;
+}
+
+.ceremony-credits {
+  width: min(100%, 550px);
+  margin: 7px auto 0 !important;
+  padding: 11px 0 10px;
+  display: grid !important;
+  grid-template-columns: 1fr 1px 1fr !important;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.ceremony-credits::before {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  width: 1px;
+  height: 38px;
+  background: rgba(197,154,67,.32);
+  justify-self: center;
+}
+
+.ceremony-credits .quartet-block {
+  margin: 0 !important;
+}
+
+.ceremony-credits .quartet-block:first-child { grid-column: 1; grid-row: 1; }
+.ceremony-credits .quartet-block:last-child  { grid-column: 3; grid-row: 1; }
+
+.ceremony-credits .eyebrow {
+  margin: 0 0 3px !important;
+  font-size: .52rem !important;
+  letter-spacing: .12em !important;
+}
+
+.ceremony-credits .quartet-link,
+.ceremony-credits .quartet-name {
+  margin: 0 !important;
+  font-size: .88rem !important;
+  line-height: 1.10 !important;
+}
+
+/* La portada ya no "termina" con otro adorno: enlaza directamente con el programa. */
+.hero-footer-rule {
+  display: none !important;
+}
+
+main {
+  width: min(900px, calc(100% - 24px)) !important;
+}
+
+.intro {
+  max-width: 580px !important;
+  margin: 1px auto 19px !important;
+  padding-top: 18px;
+  border-top: 1px solid rgba(197,154,67,.34);
+}
+
+.intro h2 {
+  margin: 0 !important;
+  font-size: clamp(2.65rem, 12vw, 3.65rem) !important;
+  line-height: .93 !important;
+  letter-spacing: -.02em !important;
+}
+
+.section-kicker {
+  margin-top: 6px !important;
+  font-size: .59rem !important;
+  letter-spacing: .17em !important;
+}
+
+.intro-copy {
+  max-width: 47ch !important;
+  margin: 11px auto 0 !important;
+  font-size: .88rem !important;
+  line-height: 1.48 !important;
+}
+
+.program {
+  width: min(100%, 860px) !important;
+  border-top: 0 !important;
+}
+
+.piece {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  padding: 25px 0 29px !important;
+  border-bottom: 1px solid rgba(197,154,67,.30) !important;
+}
+
+.piece-copy {
+  padding: 0 2px !important;
+}
+
+.piece-copy::before {
+  width: 29px !important;
+  height: 1px !important;
+  margin-bottom: 9px !important;
+  background: rgba(197,154,67,.76) !important;
+}
+
+.piece-moment {
+  margin-bottom: 4px !important;
+  color: #6f8275 !important;
+  font-size: .57rem !important;
+  letter-spacing: .115em !important;
+}
+
+.piece h3 {
+  max-width: 17ch;
+  margin: 0 !important;
+  font-size: clamp(1.95rem, 9.2vw, 2.42rem) !important;
+  line-height: .95 !important;
+  letter-spacing: -.018em !important;
+}
+
+.piece-author {
+  margin-top: 4px !important;
+  font-size: .93rem !important;
+  line-height: 1.25 !important;
+}
+
+.piece-note {
+  max-width: 45ch !important;
+  margin-top: 11px !important;
+  font-size: .86rem !important;
+  line-height: 1.50 !important;
+}
+
+.youtube-link {
+  margin-top: 9px !important;
+  color: #6f8275 !important;
+  font-size: .56rem !important;
+  font-weight: 500 !important;
+  opacity: .68 !important;
+  border-bottom-color: rgba(111,130,117,.20) !important;
+}
+
+.video-shell {
+  width: calc(100% - 8px) !important;
+  margin: 0 auto !important;
+  aspect-ratio: 16 / 9 !important;
+  border: 1px solid rgba(197,154,67,.14) !important;
+  border-radius: 1px !important;
+  background: #eee8dc !important;
+  box-shadow: none !important;
+}
+
+.video-poster {
+  isolation: isolate;
+}
+
+.video-poster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: rgba(250,246,238,.075);
+  -webkit-backdrop-filter: saturate(.62) contrast(.98);
+  backdrop-filter: saturate(.62) contrast(.98);
+  transition: background .22s ease, backdrop-filter .22s ease;
+}
+
+.video-poster:active::before,
+.video-poster:focus-visible::before {
+  background: rgba(250,246,238,.02);
+  -webkit-backdrop-filter: saturate(.95);
+  backdrop-filter: saturate(.95);
+}
+
+.play-button {
+  z-index: 2 !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: rgba(255,253,248,.93) !important;
+  border: 1px solid rgba(197,154,67,.50) !important;
+  box-shadow: 0 4px 14px rgba(30,31,28,.09) !important;
+}
+
+.video-caption {
+  display: none !important;
+}
+
+footer {
+  width: min(620px, calc(100% - 34px)) !important;
+  margin-top: 35px !important;
+  margin-bottom: 30px !important;
+}
+
+@media (min-width: 760px) {
+  .hero {
+    padding: 36px 22px 45px !important;
+  }
+
+  .ceramic-signature {
+    width: min(560px, 78vw) !important;
+  }
+
+  .monogram {
+    width: 126px !important;
+    margin-top: 36px !important;
+  }
+
+  .church-sketch {
+    width: 390px !important;
+    opacity: .68 !important;
+  }
+
+  .ceremony-credits {
+    column-gap: 30px;
+    margin-top: 12px !important;
+  }
+
+  .ceremony-credits .eyebrow {
+    font-size: .60rem !important;
+  }
+
+  .ceremony-credits .quartet-link,
+  .ceremony-credits .quartet-name {
+    font-size: 1.05rem !important;
+  }
+
+  .intro {
+    margin-top: 4px !important;
+    margin-bottom: 34px !important;
+    padding-top: 25px;
+  }
+
+  .piece {
+    grid-template-columns: minmax(245px,.86fr) minmax(360px,1.14fr) !important;
+    gap: 42px !important;
+    padding: 43px 0 47px !important;
+  }
+
+  .piece--even {
+    grid-template-columns: minmax(360px,1.14fr) minmax(245px,.86fr) !important;
+  }
+
+  .video-shell {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .hero h1 {
+    font-size: 2.55rem !important;
+  }
+
+  .ceremony-credits {
+    column-gap: 8px;
+  }
+
+  .ceremony-credits .eyebrow {
+    font-size: .49rem !important;
+  }
+
+  .ceremony-credits .quartet-link,
+  .ceremony-credits .quartet-name {
+    font-size: .82rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .video-poster::before { transition: none; }
+}
+</style>
 
 </head>
 <body>
@@ -473,12 +426,8 @@
   <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 
-  <!--
-    Estas variantes de comparación NO cargan Cloudflare Web Analytics,
-    para que tus pruebas no alteren las estadísticas reales.
-  -->
+  <!-- Estas variantes no cargan Cloudflare Analytics para no contaminar las estadísticas. -->
 
-  <!-- Easter egg: 5 clics/toques sobre el medallón cerámico -->
   <script>
     (() => {
       const analyticsUrl = 'estadisticas.html';
@@ -491,10 +440,7 @@
       medallion.addEventListener('click', () => {
         clicks++;
         clearTimeout(resetTimer);
-
-        resetTimer = setTimeout(() => {
-          clicks = 0;
-        }, 4000);
+        resetTimer = setTimeout(() => { clicks = 0; }, 4000);
 
         if (clicks >= 5) {
           clicks = 0;

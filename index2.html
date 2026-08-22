@@ -12,113 +12,123 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
 
-  <style>
-    /*
-      INDEX 2 · Ajustes esenciales
-      - Portada algo más compacta.
-      - Iglesia más ligera.
-      - Créditos tratados como una única unidad.
-      - Vídeos siempre en 16:9.
-    */
+<style>
+/* =========================================================
+   INDEX 2 — ESENCIAL
+   En móvil el cambio ya es claramente visible:
+   portada ~20% más compacta, iglesia más integrada,
+   créditos unidos y llegada más rápida al repertorio.
+   ========================================================= */
 
-    .hero {
-      padding-bottom: 58px;
-    }
+:root { --v2-gold: #c59a43; --v2-sage: #6f8275; --v2-dark: #4f6055; }
 
-    .monogram {
-      margin-top: 42px;
-    }
+.hero {
+  padding-bottom: 42px !important;
+}
 
-    .church-sketch {
-      width: min(385px, 80vw);
-      margin-top: 14px;
-      margin-bottom: 10px;
-      opacity: .74;
-    }
+.monogram {
+  margin-top: 26px !important;
+  margin-bottom: 10px !important;
+  width: clamp(104px, 27vw, 132px) !important;
+}
 
-    .ceremony-credits {
-      max-width: 640px;
-      margin: 17px auto 0;
-    }
+.hero h1 {
+  font-size: clamp(2.8rem, 13vw, 4.25rem) !important;
+  line-height: .97 !important;
+}
 
-    .ceremony-credits .quartet-block {
-      margin-top: 0;
-    }
+.hero-kicker {
+  margin-top: 4px !important;
+}
 
-    .ceremony-credits .quartet-block + .quartet-block {
-      margin-top: 17px;
-    }
+.gold-rule {
+  margin-top: 18px !important;
+  margin-bottom: 13px !important;
+}
 
-    .hero-footer-rule {
-      margin-top: 31px;
-    }
+.ceremony-line {
+  margin-top: 0 !important;
+}
 
-    .intro {
-      margin-top: 0;
-    }
+.ceremony-place {
+  margin-top: 2px !important;
+}
 
-    .video-shell {
-      aspect-ratio: 16 / 9 !important;
-    }
+.church-sketch {
+  width: min(330px, 88vw) !important;
+  margin: 10px auto 5px !important;
+  opacity: .72 !important;
+}
 
-    @media (min-width: 760px) {
-      .hero {
-        padding-bottom: 66px;
-      }
+.ceremony-credits {
+  max-width: 590px;
+  margin: 12px auto 0 !important;
+}
 
-      .monogram {
-        margin-top: 46px;
-      }
+.ceremony-credits .quartet-block {
+  margin-top: 0 !important;
+}
 
-      .ceremony-credits {
-        display: grid;
-        grid-template-columns: 1fr 1px 1fr;
-        align-items: center;
-        column-gap: 28px;
-        margin-top: 20px;
-      }
+.ceremony-credits .quartet-block + .quartet-block {
+  margin-top: 12px !important;
+}
 
-      .ceremony-credits::before {
-        content: "";
-        grid-column: 2;
-        grid-row: 1;
-        width: 1px;
-        height: 39px;
-        background: var(--gold-soft);
-        justify-self: center;
-      }
+.hero-footer-rule {
+  margin-top: 24px !important;
+  margin-bottom: 4px !important;
+}
 
-      .ceremony-credits .quartet-block:first-child {
-        grid-column: 1;
-        grid-row: 1;
-      }
+main {
+  width: min(1000px, calc(100% - 28px)) !important;
+}
 
-      .ceremony-credits .quartet-block:last-child {
-        grid-column: 3;
-        grid-row: 1;
-        margin-top: 0;
-      }
+.intro {
+  margin-top: 0 !important;
+  margin-bottom: 29px !important;
+}
 
-      .intro {
-        margin-top: 0;
-      }
-    }
+.intro h2 {
+  font-size: clamp(2.55rem, 11vw, 3.45rem) !important;
+}
 
-    @media (max-width: 520px) {
-      .hero {
-        padding-bottom: 48px;
-      }
+.intro-copy {
+  margin-top: 13px !important;
+}
 
-      .monogram {
-        margin-top: 32px;
-      }
+.video-shell {
+  aspect-ratio: 16 / 9 !important;
+}
 
-      .church-sketch {
-        width: min(315px, 90vw);
-        opacity: .72;
-      }
-    }
-  </style>
+@media (min-width: 600px) {
+  .ceremony-credits {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    align-items: center;
+    column-gap: 25px;
+    margin-top: 17px !important;
+  }
+
+  .ceremony-credits::before {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    width: 1px;
+    height: 38px;
+    background: rgba(197,154,67,.35);
+    justify-self: center;
+  }
+
+  .ceremony-credits .quartet-block:first-child { grid-column: 1; grid-row: 1; }
+  .ceremony-credits .quartet-block:last-child  { grid-column: 3; grid-row: 1; margin-top: 0 !important; }
+}
+
+@media (max-width: 599px) {
+  .ceramic-signature { width: min(330px, 88vw) !important; }
+  .ceramic-signature img { width: 40px !important; height: 40px !important; }
+  .hero { padding-top: 21px !important; }
+  .program .piece { padding-top: 31px !important; padding-bottom: 35px !important; }
+}
+</style>
 
 </head>
 <body>
@@ -178,12 +188,8 @@
   <script src="assets/config.js"></script>
   <script src="assets/app.js"></script>
 
-  <!--
-    Estas variantes de comparación NO cargan Cloudflare Web Analytics,
-    para que tus pruebas no alteren las estadísticas reales.
-  -->
+  <!-- Estas variantes no cargan Cloudflare Analytics para no contaminar las estadísticas. -->
 
-  <!-- Easter egg: 5 clics/toques sobre el medallón cerámico -->
   <script>
     (() => {
       const analyticsUrl = 'estadisticas.html';
@@ -196,10 +202,7 @@
       medallion.addEventListener('click', () => {
         clicks++;
         clearTimeout(resetTimer);
-
-        resetTimer = setTimeout(() => {
-          clicks = 0;
-        }, 4000);
+        resetTimer = setTimeout(() => { clicks = 0; }, 4000);
 
         if (clicks >= 5) {
           clicks = 0;
