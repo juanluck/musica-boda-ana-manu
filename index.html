@@ -14,13 +14,25 @@
 
 <style>
 /* =========================================================
-   INDEX 2 — ESENCIAL
-   En móvil el cambio ya es claramente visible:
-   portada ~20% más compacta, iglesia más integrada,
-   créditos unidos y llegada más rápida al repertorio.
+   INDEX 2 — VERSIÓN CORREGIDA
+   - Portada compacta
+   - Iglesia integrada
+   - Celebrante y Cuarteto SIEMPRE uno debajo del otro
+   - Misma tipografía para ambos nombres
+   - Portada completa en una pantalla móvil vertical
+   - Vídeos siempre 16:9
    ========================================================= */
 
-:root { --v2-gold: #c59a43; --v2-sage: #6f8275; --v2-dark: #4f6055; }
+:root {
+  --v2-gold: #c59a43;
+  --v2-sage: #6f8275;
+  --v2-dark: #4f6055;
+}
+
+
+/* =========================================================
+   AJUSTES GENERALES
+   ========================================================= */
 
 .hero {
   padding-bottom: 42px !important;
@@ -60,19 +72,6 @@
   opacity: .72 !important;
 }
 
-.ceremony-credits {
-  max-width: 590px;
-  margin: 12px auto 0 !important;
-}
-
-.ceremony-credits .quartet-block {
-  margin-top: 0 !important;
-}
-
-.ceremony-credits .quartet-block + .quartet-block {
-  margin-top: 12px !important;
-}
-
 .hero-footer-rule {
   margin-top: 24px !important;
   margin-bottom: 4px !important;
@@ -99,44 +98,113 @@ main {
   aspect-ratio: 16 / 9 !important;
 }
 
-@media (min-width: 600px) {
-  .ceremony-credits {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    align-items: center;
-    column-gap: 25px;
-    margin-top: 17px !important;
-  }
 
-  .ceremony-credits::before {
-    content: "";
-    grid-column: 2;
-    grid-row: 1;
-    width: 1px;
-    height: 38px;
-    background: rgba(197,154,67,.35);
-    justify-self: center;
-  }
-
-  .ceremony-credits .quartet-block:first-child { grid-column: 1; grid-row: 1; }
-  .ceremony-credits .quartet-block:last-child  { grid-column: 3; grid-row: 1; margin-top: 0 !important; }
-}
-
-@media (max-width: 599px) {
-  .ceramic-signature { width: min(330px, 88vw) !important; }
-  .ceramic-signature img { width: 40px !important; height: 40px !important; }
-  .hero { padding-top: 21px !important; }
-  .program .piece { padding-top: 31px !important; padding-bottom: 35px !important; }
-}
 /* =========================================================
-   PORTADA = UNA PANTALLA EN MÓVIL
-   Versión depurada y comprobada
+   CELEBRANTE + INTERPRETACIÓN MUSICAL
+   SIEMPRE UNO DEBAJO DEL OTRO
    ========================================================= */
 
+.ceremony-credits {
+  width: min(100%, 560px) !important;
+  max-width: 560px !important;
+
+  margin: 14px auto 0 !important;
+
+  display: block !important;
+
+  text-align: center !important;
+}
+
+
+/* Eliminamos cualquier separador vertical de versiones previas */
+.ceremony-credits::before {
+  content: none !important;
+  display: none !important;
+}
+
+
+.ceremony-credits .quartet-block {
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  text-align: center !important;
+}
+
+
+/* Separación entre Celebrante y Cuarteto */
+.ceremony-credits .quartet-block + .quartet-block {
+  margin-top: 11px !important;
+}
+
+
+/* Rótulos:
+   CELEBRANTE
+   INTERPRETACIÓN MUSICAL
+*/
+.ceremony-credits .eyebrow {
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+
+  font-family: "Noto Sans", Arial, sans-serif !important;
+  font-size: .65rem !important;
+  font-style: normal !important;
+  font-weight: 600 !important;
+
+  line-height: 1 !important;
+
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+
+  color: var(--v2-sage) !important;
+}
+
+
 /*
- * En tablet/escritorio estos contenedores son neutros,
- * por lo que el diseño actual no cambia.
- */
+   Maiquel Hernández Montero
+   Cuarteto Alhamar
+
+   EXACTAMENTE la misma tipografía.
+   El segundo continúa siendo un enlace,
+   pero visualmente ambos son idénticos.
+*/
+.ceremony-credits .quartet-name,
+.ceremony-credits .quartet-link {
+  display: block !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: "EB Garamond", Georgia, serif !important;
+  font-size: 1.08rem !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+
+  line-height: 1.1 !important;
+
+  color: var(--v2-dark) !important;
+
+  text-align: center !important;
+  text-decoration: none !important;
+}
+
+
+/* El enlace no debe cambiar de aspecto */
+.ceremony-credits .quartet-link:link,
+.ceremony-credits .quartet-link:visited,
+.ceremony-credits .quartet-link:hover,
+.ceremony-credits .quartet-link:active {
+  color: var(--v2-dark) !important;
+  text-decoration: none !important;
+}
+
+
+/* =========================================================
+   CONTENEDORES DE LA PORTADA
+   En escritorio son neutros.
+   ========================================================= */
+
 .hero-title-group,
 .ceremony-meta,
 .church-wrap {
@@ -144,7 +212,11 @@ main {
 }
 
 
-/* MÓVIL EN VERTICAL */
+/* =========================================================
+   MÓVIL VERTICAL
+   Toda la portada ocupa exactamente una pantalla.
+   ========================================================= */
+
 @media (max-width: 767px) and (orientation: portrait) {
 
   .hero {
@@ -157,25 +229,49 @@ main {
     min-height: 0 !important;
 
     padding:
-      max(9px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-top))
       10px
       max(7px, env(safe-area-inset-bottom))
       !important;
 
-    display: grid;
+    display: grid !important;
 
+    /*
+       Los seis elementos directos son:
+
+       1. medallón
+       2. título/anagrama
+       3. fecha/lugar
+       4. iglesia
+       5. créditos
+       6. línea inferior
+    */
     grid-template-rows:
       auto
       auto
       auto
-      auto
+      minmax(0, 1fr)
       auto
       auto;
 
-    align-content: space-between;
     align-items: center;
+    align-content: stretch;
 
     overflow: hidden;
+  }
+
+
+  /* ---------- Medallón superior ---------- */
+
+  .hero .ceramic-signature {
+    width: min(100%, 330px) !important;
+
+    margin: 0 auto !important;
+  }
+
+  .hero .ceramic-signature img {
+    width: 38px !important;
+    height: 38px !important;
   }
 
 
@@ -183,18 +279,23 @@ main {
 
   .hero-title-group {
     display: grid;
+
     justify-items: center;
+
     gap: 2px;
   }
 
   .hero .monogram {
-    width: clamp(82px, 20vw, 102px) !important;
-    margin: 0 auto !important;
+    width: clamp(82px, 20vw, 100px) !important;
+
+    margin: 8px auto 0 !important;
   }
 
   .hero h1 {
+    margin: 0 !important;
+
     font-size:
-      clamp(2.55rem, 11.5vw, 3.6rem)
+      clamp(2.50rem, 11.3vw, 3.55rem)
       !important;
 
     line-height: .94 !important;
@@ -204,21 +305,9 @@ main {
   .hero-kicker {
     margin: 2px 0 0 !important;
 
-    font-size: .61rem !important;
+    font-size: .60rem !important;
+
     letter-spacing: .17em !important;
-  }
-
-
-  /* ---------- Medallón superior ---------- */
-
-  .hero .ceramic-signature {
-    width: min(100%, 335px) !important;
-    margin: 0 auto !important;
-  }
-
-  .hero .ceramic-signature img {
-    width: 40px !important;
-    height: 40px !important;
   }
 
 
@@ -226,25 +315,30 @@ main {
 
   .ceremony-meta {
     display: grid;
+
     justify-items: center;
+
     gap: 2px;
   }
 
   .hero .gold-rule {
-    width: min(240px, 68%) !important;
-    margin: 0 auto !important;
+    width: min(235px, 67%) !important;
+
+    margin: 9px auto 7px !important;
   }
 
   .ceremony-line {
     margin: 0 !important;
-    font-size: .98rem !important;
+
+    font-size: .96rem !important;
   }
 
   .ceremony-place {
     margin: 2px 0 0 !important;
 
-    font-size: .90rem !important;
-    line-height: 1.28 !important;
+    font-size: .88rem !important;
+
+    line-height: 1.27 !important;
   }
 
 
@@ -253,167 +347,255 @@ main {
   .church-wrap {
     display: flex;
 
+    min-height: 0;
+
     align-items: center;
     justify-content: center;
-
-    min-height: 0;
   }
 
   .hero .church-sketch {
-    width: min(330px, 88vw) !important;
+    width: min(300px, 82vw) !important;
+
+    max-width: 100% !important;
     max-height: 100% !important;
 
-    margin: 0 auto !important;
+    margin: 3px auto !important;
 
     object-fit: contain;
 
-    opacity: .70 !important;
+    opacity: .69 !important;
   }
 
 
   /* ---------- Celebrante / Cuarteto ---------- */
 
   .ceremony-credits {
-    width: min(100%, 560px) !important;
-    max-width: none !important;
+    width: min(100%, 500px) !important;
 
-    margin: 0 auto !important;
+    margin: 5px auto 0 !important;
 
-    display: grid !important;
-
-    grid-template-columns:
-      1fr 1px 1fr;
-
-    align-items: start;
-
-    column-gap: 9px;
+    display: block !important;
   }
 
-  .ceremony-credits::before {
-    content: "";
-
-    grid-column: 2;
-    grid-row: 1;
-
-    width: 1px;
-    height: 36px;
-
-    background:
-      rgba(197, 154, 67, .32);
-
-    justify-self: center;
-  }
-
-  .ceremony-credits .quartet-block {
-    margin: 0 !important;
-    display: grid;
-    grid-template-rows: auto auto;
-    justify-items: center;
-    align-content: start;
-  }
-
-  .ceremony-credits
-  .quartet-block:first-child {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .ceremony-credits
-  .quartet-block:last-child {
-    grid-column: 3;
-    grid-row: 1;
+  .ceremony-credits .quartet-block + .quartet-block {
+    margin-top: 7px !important;
   }
 
   .ceremony-credits .eyebrow {
-    margin: 0 0 3px !important;
+    margin-bottom: 2px !important;
 
-    font-size: .50rem !important;
-    letter-spacing: .11em !important;
-    line-height: 1 !important;
+    font-size: .49rem !important;
+
+    letter-spacing: .115em !important;
   }
 
-  .ceremony-credits .quartet-link,
-  .ceremony-credits .quartet-name {
-    margin: 0 !important;
+  .ceremony-credits .quartet-name,
+  .ceremony-credits .quartet-link {
+    font-family: "EB Garamond", Georgia, serif !important;
 
-    font-size: .86rem !important;
-    line-height: 1.10 !important;
+    font-size: .80rem !important;
+
+    font-style: italic !important;
+    font-weight: 400 !important;
+
+    line-height: 1.05 !important;
+
+    color: var(--v2-dark) !important;
   }
 
 
   /* ---------- Línea inferior ---------- */
 
   .hero .hero-footer-rule {
-    width: min(240px, 68%) !important;
-    margin: 0 auto !important;
+    width: min(235px, 67%) !important;
+
+    margin: 7px auto 0 !important;
   }
+
+
+  /* ---------- Repertorio ---------- */
+
+  .program .piece {
+    padding-top: 31px !important;
+    padding-bottom: 35px !important;
+  }
+
 }
 
 
-/*
- * Ajuste adicional para teléfonos con
- * poca altura útil: iPhone SE, barras
- * del navegador visibles, etc.
- */
+/* =========================================================
+   MÓVILES CON MUY POCA ALTURA
+   Ej.: 360 × 640, barras del navegador visibles, etc.
+   ========================================================= */
+
 @media
   (max-width: 767px)
   and (orientation: portrait)
   and (max-height: 700px) {
 
   .hero {
-    padding-top: 6px !important;
-    padding-bottom: 5px !important;
+    padding-top: 5px !important;
+    padding-bottom: 4px !important;
   }
+
 
   .hero .ceramic-signature img {
-    width: 34px !important;
-    height: 34px !important;
+    width: 32px !important;
+    height: 32px !important;
   }
 
+
   .hero .monogram {
-    width: 76px !important;
+    width: 72px !important;
+
+    margin-top: 3px !important;
   }
+
 
   .hero h1 {
     font-size:
-      clamp(2.30rem, 10.8vw, 3.10rem)
+      clamp(2.20rem, 10.4vw, 3rem)
       !important;
   }
 
+
   .hero-kicker {
-    font-size: .54rem !important;
+    font-size: .52rem !important;
   }
+
+
+  .hero .gold-rule {
+    margin-top: 5px !important;
+    margin-bottom: 4px !important;
+
+    width: min(210px, 60%) !important;
+  }
+
 
   .ceremony-line {
-    font-size: .89rem !important;
+    font-size: .86rem !important;
   }
+
 
   .ceremony-place {
-    font-size: .81rem !important;
+    font-size: .78rem !important;
   }
 
+
   .hero .church-sketch {
-    width: min(280px, 80vw) !important;
+    width: min(245px, 72vw) !important;
+
     opacity: .67 !important;
   }
 
+
+  .ceremony-credits {
+    margin-top: 2px !important;
+  }
+
+
+  .ceremony-credits .quartet-block + .quartet-block {
+    margin-top: 5px !important;
+  }
+
+
   .ceremony-credits .eyebrow {
-    font-size: .45rem !important;
+    font-size: .43rem !important;
   }
 
-  .ceremony-credits .quartet-link,
-  .ceremony-credits .quartet-name {
-    font-size: .76rem !important;
+
+  .ceremony-credits .quartet-name,
+  .ceremony-credits .quartet-link {
+    font-size: .72rem !important;
   }
 
-  .ceremony-credits::before {
-    height: 30px;
-  }
 
-  .hero .gold-rule,
   .hero .hero-footer-rule {
-    width: min(215px, 62%) !important;
+    width: min(210px, 60%) !important;
+
+    margin-top: 4px !important;
   }
+
+}
+
+
+/* =========================================================
+   MÓVILES ALTOS
+   Aprovechamos el espacio extra sin romper la portada.
+   ========================================================= */
+
+@media
+  (min-width: 390px)
+  and (max-width: 767px)
+  and (min-height: 780px)
+  and (orientation: portrait) {
+
+  .hero {
+    padding-top: 13px !important;
+    padding-bottom: 11px !important;
+  }
+
+
+  .hero .ceramic-signature img {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+
+  .hero .monogram {
+    width: 100px !important;
+
+    margin-top: 10px !important;
+  }
+
+
+  .hero h1 {
+    font-size:
+      clamp(2.70rem, 11.8vw, 3.60rem)
+      !important;
+  }
+
+
+  .hero-kicker {
+    font-size: .62rem !important;
+  }
+
+
+  .ceremony-line {
+    font-size: 1rem !important;
+  }
+
+
+  .ceremony-place {
+    font-size: .90rem !important;
+  }
+
+
+  .hero .church-sketch {
+    width: min(315px, 81vw) !important;
+  }
+
+
+  .ceremony-credits {
+    margin-top: 6px !important;
+  }
+
+
+  .ceremony-credits .quartet-block + .quartet-block {
+    margin-top: 8px !important;
+  }
+
+
+  .ceremony-credits .eyebrow {
+    font-size: .52rem !important;
+  }
+
+
+  .ceremony-credits .quartet-name,
+  .ceremony-credits .quartet-link {
+    font-size: .90rem !important;
+  }
+
 }
 </style>
 
