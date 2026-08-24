@@ -212,5 +212,137 @@ main {
       });
     })();
   </script>
+  <script>
+(() => {
+
+  const MOBILE_MAX_WIDTH = 767;
+
+  function prepareHero() {
+
+    const hero = document.querySelector('.hero');
+
+    if (!hero) return;
+
+    /*
+     * Creamos automáticamente un contenedor alrededor
+     * de todo el contenido actual del hero.
+     *
+     * Así NO tienes que modificar manualmente tu HTML.
+     */
+    let fit = hero.querySelector('.hero-fit');
+
+    if (!fit) {
+
+      fit = document.createElement('div');
+      fit.className = 'hero-fit';
+
+      while (hero.firstChild) {
+        fit.appendChild(hero.firstChild);
+      }
+
+      hero.appendChild(fit);
+    }
+
+    return { hero, fit };
+  }
+
+
+  function fitHeroToScreen() {
+
+    const elements = prepareHero();
+
+    if (!elements) return;
+
+    const { hero, fit } = elements;
+
+
+    /*
+     * Solo aplicamos el ajuste automático
+     * en móvil vertical.
+     */
+    const mobile =
+      window.innerWidth <= MOBILE_MAX_WIDTH &&
+      window.innerHeight > window.innerWidth;
+
+
+    if (!mobile) {
+
+      hero.style.removeProperty('--hero-scale');
+
+      fit.style.removeProperty('--hero-scale');
+      fit.style.removeProperty('position');
+
+      return;
+    }
+
+
+    /*
+     * Primero medimos el contenido sin reducción.
+     */
+    fit.style.setProperty('--hero-scale', '1');
+
+
+    requestAnimationFrame(() => {
+
+      const availableHeight =
+        hero.clientHeight - 4;
+
+      const contentHeight =
+        fit.scrollHeight;
+
+
+      /*
+       * Si ya cabe, no reducimos nada.
+       *
+       * Si no cabe, calculamos exactamente
+       * el factor necesario.
+       */
+      const scale =
+        Math.min(
+          1,
+          availableHeight / contentHeight
+        );
+
+
+      fit.style.setProperty(
+        '--hero-scale',
+        scale.toFixed(4)
+      );
+
+    });
+
+  }
+
+
+  /*
+   * Esperamos a que fuentes e imágenes
+   * estén cargadas antes de medir.
+   */
+  window.addEventListener(
+    'load',
+    fitHeroToScreen
+  );
+
+
+  /*
+   * Recalculamos si cambia orientación
+   * o tamaño de pantalla.
+   */
+  window.addEventListener(
+    'resize',
+    fitHeroToScreen
+  );
+
+
+  if (document.fonts?.ready) {
+
+    document.fonts.ready.then(
+      fitHeroToScreen
+    );
+
+  }
+
+})();
+</script>
 </body>
 </html>
