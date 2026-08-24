@@ -284,7 +284,7 @@ main {
     grid-template-columns:
       1fr 1px 1fr;
 
-    align-items: center;
+    align-items: start;
 
     column-gap: 9px;
   }
@@ -306,6 +306,10 @@ main {
 
   .ceremony-credits .quartet-block {
     margin: 0 !important;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-content: start;
   }
 
   .ceremony-credits
@@ -325,6 +329,7 @@ main {
 
     font-size: .50rem !important;
     letter-spacing: .11em !important;
+    line-height: 1 !important;
   }
 
   .ceremony-credits .quartet-link,
